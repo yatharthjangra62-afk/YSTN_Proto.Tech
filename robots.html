@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Projects | YSTN Proto Tech</title>
+    <meta name="description" content="Advanced robotics projects showcase: Human Following Robot, Firefighter Robot, and Line Follower Robot with detailed specifications and features.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlack: '#0B0F19',
+                        brandCardDark: '#131A26',
+                        brandWhite: '#FAFAFA',
+                        brandCardLight: '#FFFFFF',
+                        electricBlue: '#00E5FF',
+                        electricBlueHover: '#00B8D4',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-text {
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+        }
+        .glow-border:focus {
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+            border-color: #00E5FF;
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-brandWhite text-gray-800 dark:bg-brandBlack dark:text-gray-200 font-sans antialiased selection:bg-electricBlue selection:text-brandBlack transition-colors duration-300">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-brandWhite/80 dark:bg-brandBlack/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-xl font-bold tracking-wider text-gray-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-microchip text-electricBlue text-2xl"></i>
+                YSTN <span class="text-electricBlue">PROTO TECH</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="hover:text-electricBlue transition-colors font-medium text-gray-600 dark:text-gray-300">Home</a>
+                <a href="index.html#portfolio" class="hover:text-electricBlue transition-colors font-medium text-gray-600 dark:text-gray-300">Portfolio</a>
+                <a href="robots.html" class="text-electricBlue font-medium">Robot Projects</a>
+                <a href="index.html#contact" class="hover:text-electricBlue transition-colors font-medium text-gray-600 dark:text-gray-300">Contact</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <button id="theme-toggle" class="p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 hover:text-electricBlue text-gray-500 dark:text-gray-400 transition-all" aria-label="Toggle Theme">
+                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                </button>
+                <a href="tel:+917982095215" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-electricBlue transition-colors">
+                    <i class="fa-solid fa-phone text-electricBlue mr-1"></i> +91 7982095215
+                </a>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="flex items-center gap-4 md:hidden">
+                <button id="theme-toggle-mobile" class="p-2 text-gray-500 dark:text-gray-400">
+                    <i id="theme-icon-mobile" class="fa-solid fa-moon"></i>
+                </button>
+                <button id="menu-btn" class="text-gray-900 dark:text-white">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-brandCardLight dark:bg-brandCardDark border-b border-gray-200 dark:border-gray-800 px-4 pt-2 pb-6 space-y-4">
+            <a href="index.html" class="block text-gray-600 dark:text-gray-300 hover:text-electricBlue py-2">Home</a>
+            <a href="index.html#portfolio" class="block text-gray-600 dark:text-gray-300 hover:text-electricBlue py-2">Portfolio</a>
+            <a href="robots.html" class="block text-electricBlue py-2 font-semibold">Robot Projects</a>
+            <a href="index.html#contact" class="block text-gray-600 dark:text-gray-300 hover:text-electricBlue py-2">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden px-4 py-20">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-electricBlue/5 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="max-w-4xl text-center z-10 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brandCardLight dark:bg-brandCardDark border border-gray-200 dark:border-gray-800 text-xs sm:text-sm text-electricBlue font-medium tracking-wide uppercase mb-2">
+                <span class="w-2 h-2 rounded-full bg-electricBlue animate-pulse"></span> Advanced Robotics Portfolio
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
+                Autonomous <br><span class="text-electricBlue glow-text">Robot Systems</span>
+            </h1>
+            <p class="text-base sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+                Cutting-edge robotics projects featuring AI vision, autonomous navigation, and intelligent automation
+            </p>
+        </div>
+    </section>
+
+    <!-- Robot Projects Detail Section -->
+    <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Robot 1: Human Following Robot -->\n        <div class="mb-24 bg-gradient-to-br from-brandCardLight to-gray-50 dark:from-brandCardDark dark:to-gray-900 rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 sm:p-12">
+                <div class="flex flex-col justify-center space-y-6">
+                    <div class="space-y-2">
+                        <span class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-xs font-semibold">VISION AI</span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Human Following Robot</h2>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                        An advanced autonomous system that uses stereo vision technology to detect and track human subjects in real-time. The robot maintains optimal distance while navigating complex indoor environments with intelligent obstacle avoidance.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Key Features:</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                                <span class="flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full">
+                                    <i class="fa-solid fa-check text-electricBlue text-sm"></i>
+                                </span>
+                                Dual Stereo Camera Setup with 30FPS processing
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                                <span class="flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full">
+                                    <i class="fa-solid fa-check text-electricBlue text-sm"></i>
+                                </span>
+                                Dynamic Distance Control (0.5-3 meters)
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                                <span class="flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full">
+                                    <i class="fa-solid fa-check text-electricBlue text-sm"></i>
+                                </span>
+                                Real-time Obstacle Detection & Avoidance
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                                <span class="flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full">
+                                    <i class="fa-solid fa-check text-electricBlue text-sm"></i>
+                                </span>
+                                Adaptive Navigation Algorithms
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                                <span class="flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full">
+                                    <i class="fa-solid fa-check text-electricBlue text-sm"></i>
+                                </span>
+                                Independent Motor Control for Smooth Movement
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 pt-6 border-t border-gray-300 dark:border-gray-700">
+                        <div class="space-y-1">
+                            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Processing Power</p>\n                            <p class="text-lg font-semibold text-gray-900 dark:text-white">ARM Cortex-M4</p>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide\">Battery Runtime</p>
+                            <p class="text-lg font-semibold text-gray-900 dark:text-white\">4-6 Hours</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-center">
+                    <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center overflow-hidden">
+                        <img src=\"assets/images/human-following-robot.jpg\" alt=\"Human Following Robot\" class=\"w-full h-full object-cover\">
+                        <div class=\"absolute inset-0 bg-gradient-to-t from-black/30 to-transparent\"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Robot 2: Firefighter Robot -->
+        <div class=\"mb-24 bg-gradient-to-br from-brandCardLight to-gray-50 dark:from-brandCardDark dark:to-gray-900 rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-xl\">
+            <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8 p-8 sm:p-12\">
+                <div class=\"flex items-center justify-center md:order-2\">
+                    <div class=\"relative w-full aspect-square rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center overflow-hidden\">
+                        <img src=\"assets/images/firefighter-robot.jpg\" alt=\"Firefighter Robot\" class=\"w-full h-full object-cover\">
+                        <div class=\"absolute inset-0 bg-gradient-to-t from-black/30 to-transparent\"></div>
+                    </div>
+                </div>
+                
+                <div class=\"flex flex-col justify-center space-y-6 md:order-1\">
+                    <div class=\"space-y-2\">
+                        <span class=\"inline-block px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-full text-xs font-semibold\">AUTONOMOUS FIRE SUPPRESSION</span>
+                        <h2 class=\"text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white\">Firefighter Robot</h2>
+                    </div>
+                    <p class=\"text-gray-600 dark:text-gray-300 text-lg leading-relaxed\">
+                        A sophisticated autonomous fire suppression platform equipped with intelligent flame detection and automated water spray mechanisms. Designed for rapid response and effective fire containment in hazardous environments.
+                    </p>
+                    
+                    <div class=\"space-y-4\">
+                        <h3 class=\"text-lg font-semibold text-gray-900 dark:text-white\">Key Features:</h3>
+                        <ul class=\"space-y-3\">
+                            <li class=\"flex items-center gap-3 text-gray-700 dark:text-gray-300\">
+                                <span class=\"flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full\">
+                                    <i class=\"fa-solid fa-check text-electricBlue text-sm\"></i>
+                                </span>
+                                Flame Detection Sensors with <3cm accuracy
+                            </li>
+                            <li class=\"flex items-center gap-3 text-gray-700 dark:text-gray-300\">
+                                <span class=\"flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full\">
+                                    <i class=\"fa-solid fa-check text-electricBlue text-sm\"></i>
+                                </span>
+                                Automated Water Spray Mechanism (2-5L capacity)
+                            </li>
+                            <li class=\"flex items-center gap-3 text-gray-700 dark:text-gray-300\">
+                                <span class=\"flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full\">
+                                    <i class=\"fa-solid fa-check text-electricBlue text-sm\"></i>
+                                </span>
+                                Thermal Imaging Integration for Environment Mapping
+                            </li>
+                            <li class=\"flex items-center gap-3 text-gray-700 dark:text-gray-300\">
+                                <span class=\"flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full\">
+                                    <i class=\"fa-solid fa-check text-electricBlue text-sm\"></i>
+                                </span>
+                                Remote Control & Autonomous Operation Mode
+                            </li>
+                            <li class=\"flex items-center gap-3 text-gray-700 dark:text-gray-300\">
+                                <span class=\"flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full\">
+                                    <i class=\"fa-solid fa-check text-electricBlue text-sm\"></i>
+                                </span>
+                                Multi-Directional Spray Patterns with Pressure Control
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class=\"grid grid-cols-2 gap-4 pt-6 border-t border-gray-300 dark:border-gray-700\">
+                        <div class=\"space-y-1\">
+                            <p class=\"text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide\">Water Capacity</p>
+                            <p class=\"text-lg font-semibold text-gray-900 dark:text-white\">5 Liters</p>
+                        </div>
+                        <div class=\"space-y-1\">
+                            <p class=\"text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide\">Response Time</p>
+                            <p class=\"text-lg font-semibold text-gray-900 dark:text-white\"><1 Second</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Robot 3: Line Follower Robot -->
+        <div class=\"bg-gradient-to-br from-brandCardLight to-gray-50 dark:from-brandCardDark dark:to-gray-900 rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-xl\">
+            <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8 p-8 sm:p-12\">
+                <div class=\"flex flex-col justify-center space-y-6\">
+                    <div class=\"space-y-2\">
+                        <span class=\"inline-block px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold\">EDUCATIONAL ROBOTICS</span>
+                        <h2 class=\"text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white\">Line Follower Robot</h2>
+                    </div>
+                    <p class=\"text-gray-600 dark:text-gray-300 text-lg leading-relaxed\">
+                        A precision-engineered autonomous platform featuring an advanced IR sensor array for accurate line tracking on various surfaces. Perfect for educational demonstrations and competitive robotics challenges.
+                    </p>
+                    
+                    <div class=\"space-y-4\">
+                        <h3 class=\"text-lg font-semibold text-gray-900 dark:text-white\">Key Features:</h3>
+                        <ul class=\"space-y-3\">
+                            <li class=\"flex items-center gap-3 text-gray-700 dark:text-gray-300\">
+                                <span class=\"flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full\">
+                                    <i class=\"fa-solid fa-check text-electricBlue text-sm\"></i>
+                                </span>
+                                8-Channel IR Sensor Array for Precision Detection
+                            </li>
+                            <li class=\"flex items-center gap-3 text-gray-700 dark:text-gray-300\">
+                                <span class=\"flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full\">
+                                    <i class=\"fa-solid fa-check text-electricBlue text-sm\"></i>
+                                </span>
+                                PID-Controlled Motor Speed Regulation
+                            </li>
+                            <li class=\"flex items-center gap-3 text-gray-700 dark:text-gray-300\">
+                                <span class=\"flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full\">
+                                    <i class=\"fa-solid fa-check text-electricBlue text-sm\"></i>
+                                </span>
+                                Intelligent Obstacle Detection & Bypass
+                            </li>
+                            <li class=\"flex items-center gap-3 text-gray-700 dark:text-gray-300\">
+                                <span class=\"flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full\">
+                                    <i class=\"fa-solid fa-check text-electricBlue text-sm\"></i>
+                                </span>
+                                Custom Motor Driver Integration
+                            </li>
+                            <li class=\"flex items-center gap-3 text-gray-700 dark:text-gray-300\">
+                                <span class=\"flex items-center justify-center w-6 h-6 bg-electricBlue/20 rounded-full\">
+                                    <i class=\"fa-solid fa-check text-electricBlue text-sm\"></i>
+                                </span>
+                                Path Optimization Algorithms
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class=\"grid grid-cols-2 gap-4 pt-6 border-t border-gray-300 dark:border-gray-700\">
+                        <div class=\"space-y-1\">
+                            <p class=\"text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide\">Max Speed</p>
+                            <p class=\"text-lg font-semibold text-gray-900 dark:text-white\">60 cm/s</p>
+                        </div>
+                        <div class=\"space-y-1\">
+                            <p class=\"text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide\">Track Width</p>
+                            <p class=\"text-lg font-semibold text-gray-900 dark:text-white\">10mm Precision</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class=\"flex items-center justify-center\">
+                    <div class=\"relative w-full aspect-square rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center overflow-hidden\">
+                        <img src=\"assets/images/line-follower-robot.jpg\" alt=\"Line Follower Robot\" class=\"w-full h-full object-cover\">
+                        <div class=\"absolute inset-0 bg-gradient-to-t from-black/30 to-transparent\"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Comparison Section -->
+    <section class=\"py-24 bg-gray-50 dark:bg-brandCardDark/40 border-y border-gray-200 dark:border-gray-900\">
+        <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">
+            <div class=\"text-center max-w-3xl mx-auto mb-16\">
+                <h2 class=\"text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl\">Technical Comparison</h2>
+                <p class=\"mt-4 text-gray-600 dark:text-gray-400\">Detailed specifications across all three robotics platforms</p>
+            </div>
+
+            <div class=\"overflow-x-auto\">
+                <table class=\"w-full text-left\">
+                    <thead>
+                        <tr class=\"border-b border-gray-300 dark:border-gray-700\">
+                            <th class=\"py-4 px-4 font-semibold text-gray-900 dark:text-white\">Feature</th>
+                            <th class=\"py-4 px-4 font-semibold text-gray-900 dark:text-white\">Human Following</th>
+                            <th class=\"py-4 px-4 font-semibold text-gray-900 dark:text-white\">Firefighter</th>
+                            <th class=\"py-4 px-4 font-semibold text-gray-900 dark:text-white\">Line Follower</th>
+                        </tr>
+                    </thead>
+                    <tbody class=\"divide-y divide-gray-200 dark:divide-gray-800\">
+                        <tr class=\"hover:bg-gray-100 dark:hover:bg-gray-900/50 transition-colors\">
+                            <td class=\"py-4 px-4 font-semibold text-gray-700 dark:text-gray-300\">Primary Sensor</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">Stereo Camera</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">Flame Detector</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">IR Sensor Array</td>
+                        </tr>
+                        <tr class=\"hover:bg-gray-100 dark:hover:bg-gray-900/50 transition-colors\">
+                            <td class=\"py-4 px-4 font-semibold text-gray-700 dark:text-gray-300\">Processing Unit</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">ARM Cortex-M4</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">Arduino Mega</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">ATmega328</td>
+                        </tr>
+                        <tr class=\"hover:bg-gray-100 dark:hover:bg-gray-900/50 transition-colors\">
+                            <td class=\"py-4 px-4 font-semibold text-gray-700 dark:text-gray-300\">Battery Runtime</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">4-6 Hours</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">3-4 Hours</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">2-3 Hours</td>
+                        </tr>
+                        <tr class=\"hover:bg-gray-100 dark:hover:bg-gray-900/50 transition-colors\">
+                            <td class=\"py-4 px-4 font-semibold text-gray-700 dark:text-gray-300\">Max Speed</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">1.5 m/s</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">0.5 m/s</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">0.6 m/s</td>
+                        </tr>
+                        <tr class=\"hover:bg-gray-100 dark:hover:bg-gray-900/50 transition-colors\">
+                            <td class=\"py-4 px-4 font-semibold text-gray-700 dark:text-gray-300\">Operating Range</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">0.5-3m tracking</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">5-10m detection</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">2-5mm line width</td>
+                        </tr>
+                        <tr class=\"hover:bg-gray-100 dark:hover:bg-gray-900/50 transition-colors\">
+                            <td class=\"py-4 px-4 font-semibold text-gray-700 dark:text-gray-300\">Autonomy Level</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">Full Autonomous</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">Autonomous + Remote</td>
+                            <td class=\"py-4 px-4 text-gray-600 dark:text-gray-400\">Fully Autonomous</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class=\"py-24 max-w-4xl mx-auto px-4\">
+        <div class=\"bg-gradient-to-r from-electricBlue to-electricBlueHover rounded-3xl p-8 sm:p-12 shadow-xl text-center\">
+            <h2 class=\"text-3xl sm:text-4xl font-bold text-brandBlack mb-4\">Ready to Build Your Custom Robot?</h2>
+            <p class=\"text-brandBlack/80 text-lg mb-8\">Let's bring your robotics vision to life with professional engineering and innovative solutions.</p>
+            <a href=\"index.html#request-form\" class=\"inline-block bg-brandBlack text-electricBlue font-bold px-8 py-4 rounded-xl hover:bg-gray-900 transition-all duration-300\">
+                Start Your Project
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class=\"bg-brandBlack text-gray-400 border-t border-gray-800 py-8 text-center text-sm\">
+        <div class=\"max-w-7xl mx-auto px-4\">
+            <p>&copy; 2026 YSTN Proto Tech. All rights reserved. | Advanced Robotics & Electronics.</p>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const htmlElement = document.documentElement;
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'dark') {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+        updateThemeIcon();
+
+        function toggleTheme() {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateThemeIcon();
+        }
+
+        function updateThemeIcon() {
+            if (htmlElement.classList.contains('dark')) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeIconMobile.classList.remove('fa-sun');
+                themeIconMobile.classList.add('fa-moon');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeIconMobile.classList.remove('fa-moon');
+                themeIconMobile.classList.add('fa-sun');
+            }
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
