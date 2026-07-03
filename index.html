@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YSTN Proto Tech | Custom Electronics, IoT & Arduino Projects</title>
+    <meta name="description" content="Get custom electronics projects, IoT solutions, ESP32 development, and school projects built to your specifications. Professional prototyping.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlack: '#0B0F19',
+                        brandCardDark: '#131A26',
+                        brandWhite: '#FAFAFA',
+                        brandCardLight: '#FFFFFF',
+                        electricBlue: '#00E5FF',
+                        electricBlueHover: '#00B8D4',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-text {
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+        }
+        .glow-border:focus {
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+            border-color: #00E5FF;
+        }
+    </style>
+</head>
+<body class="bg-brandWhite text-gray-800 dark:bg-brandBlack dark:text-gray-200 font-sans antialiased selection:bg-electricBlue selection:text-brandBlack transition-colors duration-300">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-brandWhite/80 dark:bg-brandBlack/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-wider text-gray-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-microchip text-electricBlue text-2xl"></i>
+                YSTN <span class="text-electricBlue">PROTO TECH</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#portfolio" class="hover:text-electricBlue transition-colors font-medium text-gray-600 dark:text-gray-300">Custom Projects</a>
+                <a href="#request-form" class="hover:text-electricBlue transition-colors font-medium text-gray-600 dark:text-gray-300">Request Project</a>
+                <a href="#contact" class="hover:text-electricBlue transition-colors font-medium text-gray-600 dark:text-gray-300">Contact</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 hover:text-electricBlue text-gray-500 dark:text-gray-400 transition-all" aria-label="Toggle Theme">
+                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                </button>
+
+                <a href="tel:+917982095215" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-electricBlue transition-colors">
+                    <i class="fa-solid fa-phone text-electricBlue mr-1"></i> +91 7982095215
+                </a>
+                <a href="#request-form" class="bg-transparent border border-electricBlue text-electricBlue hover:bg-electricBlue hover:text-brandBlack px-5 py-2 rounded-lg font-semibold transition-all duration-300">
+                    Get a Quote
+                </a>
+            </div>
+
+            <!-- Mobile Action Bar (Toggle + Menu) -->
+            <div class="flex items-center gap-4 md:hidden">
+                <button id="theme-toggle-mobile" class="p-2 text-gray-500 dark:text-gray-400" aria-label="Toggle Theme">
+                    <i id="theme-icon-mobile" class="fa-solid fa-moon"></i>
+                </button>
+                <button id="menu-btn" class="text-gray-900 dark:text-white focus:outline-none" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brandCardLight dark:bg-brandCardDark border-b border-gray-200 dark:border-gray-800 px-4 pt-2 pb-6 space-y-4">
+            <a href="#portfolio" class="block text-gray-600 dark:text-gray-300 hover:text-electricBlue py-2">Custom Projects</a>
+            <a href="#request-form" class="block text-gray-600 dark:text-gray-300 hover:text-electricBlue py-2">Request Project</a>
+            <a href="#contact" class="block text-gray-600 dark:text-gray-300 hover:text-electricBlue py-2">Contact</a>
+            <div class="pt-4 border-t border-gray-200 dark:border-gray-700 space-y-3 text-sm">
+                <a href="tel:+917982095215" class="block text-gray-600 dark:text-gray-300"><i class="fa-solid fa-phone text-electricBlue mr-2"></i> +91 7982095215</a>
+                <a href="mailto:support.ystn_proto.tech@gmail.com" class="block text-gray-600 dark:text-gray-300"><i class="fa-solid fa-envelope text-electricBlue mr-2"></i> support.ystn_proto.tech@gmail.com</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden px-4">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-electricBlue/5 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="max-w-4xl text-center z-10 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brandCardLight dark:bg-brandCardDark border border-gray-200 dark:border-gray-800 text-xs sm:text-sm text-electricBlue font-medium tracking-wide uppercase mb-2">
+                <span class="w-2 h-2 rounded-full bg-electricBlue animate-pulse"></span> Custom Prototyping & Layout Delivery
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
+                Bringing Your Hardware <br><span class="text-electricBlue glow-text">Ideas to Life</span>
+            </h1>
+            <p class="text-base sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+                Expert engineering for custom electronics, internet of things (IoT) architecture, automated firmware, and specialized academic engineering projects.
+            </p>
+            <div class="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#request-form" class="w-full sm:w-auto bg-electricBlue text-brandBlack font-bold px-8 py-4 rounded-xl shadow-lg shadow-electricBlue/20 hover:bg-electricBlueHover transform hover:-translate-y-0.5 transition-all duration-300 text-center">
+                    Start Your Project
+                </a>
+                <a href="#portfolio" class="w-full sm:w-auto bg-brandCardLight dark:bg-brandCardDark text-gray-900 dark:text-white border border-gray-200 dark:border-gray-800 font-medium px-8 py-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 text-center">
+                    View Portfolio Examples
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Electronic Projects Section (With Production Images) -->
+    <section id="portfolio" class="bg-gray-50 dark:bg-brandCardDark/30 border-y border-gray-200 dark:border-gray-900 py-24 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">Custom Electronic Projects</h2>
+                <p class="mt-4 text-gray-600 dark:text-gray-400">Tailored hardware and firmware implementations centered around robust prototyping platforms.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: Arduino -->
+                <div class="bg-brandCardLight dark:bg-brandCardDark border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden group shadow-sm hover:border-electricBlue/50 transition-all duration-300">
+                    <div class="h-56 overflow-hidden relative border-b border-gray-200 dark:border-gray-800">
+                        <img src="https://images.unsplash.com/photo-1608564697171-2f4d31b003d7?auto=format&fit=crop&w=600&q=80" alt="Arduino development hardware setup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute bottom-3 right-3 text-xs bg-brandBlack text-electricBlue border border-electricBlue/30 px-2 py-1 rounded font-medium">Arduino Focus</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Automated Relay Controllers</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Custom logic boards featuring multi-channel relay isolation, timed sequence states, and modular physical sensor footprints.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2: ESP32 / IoT -->
+                <div class="bg-brandCardLight dark:bg-brandCardDark border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden group shadow-sm hover:border-electricBlue/50 transition-all duration-300">
+                    <div class="h-56 overflow-hidden relative border-b border-gray-200 dark:border-gray-800">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="ESP32 and integrated IoT circuits" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute bottom-3 right-3 text-xs bg-brandBlack text-electricBlue border border-electricBlue/30 px-2 py-1 rounded font-medium">ESP32 / IoT</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Wireless Sensor Nodes</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Wi-Fi and BLE integrated boards utilizing low-power standby modes, asynchronous data transmission pipelines, and real-time dashboard support.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3: School / College focus -->
+                <div class="bg-brandCardLight dark:bg-brandCardDark border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden group shadow-sm hover:border-electricBlue/50 transition-all duration-300">
+                    <div class="h-56 overflow-hidden relative border-b border-gray-200 dark:border-gray-800">
+                        <img src="https://images.unsplash.com/photo-1631553127988-3475722384a5?auto=format&fit=crop&w=600&q=80" alt="Academic electronics engineering setup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute bottom-3 right-3 text-xs bg-brandBlack text-electricBlue border border-electricBlue/30 px-2 py-1 rounded font-medium">School Projects</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Academic Prototype Frameworks</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Comprehensive educational packages with clean structural wiring layouts, extensive source code comments, and fully detailed operational logs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Request Form Section -->
+    <section id="request-form" class="py-24 max-w-4xl mx-auto px-4">
+        <div class="bg-brandCardLight dark:bg-brandCardDark border border-gray-200 dark:border-gray-800 rounded-3xl p-8 sm:p-12 shadow-xl relative transition-colors duration-300">
+            
+            <div class="mb-10 text-center sm:text-left">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Submit a Project Request</h2>
+                <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm sm:text-base">Provide structural details about your project needs, and we will get back to you with a direct architectural layout and direct cost estimate.</p>
+            </div>
+
+            <form action="#" method="POST" class="space-y-6" enctype="multipart/form-data">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Full Name *</label>
+                        <input type="text" id="name" name="name" required class="w-full bg-transparent border border-gray-300 dark:border-gray-800 rounded-xl px-4 py-3.5 text-gray-900 dark:text-white focus:outline-none glow-border transition-all">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full bg-transparent border border-gray-300 dark:border-gray-800 rounded-xl px-4 py-3.5 text-gray-900 dark:text-white focus:outline-none glow-border transition-all">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Email Address *</label>
+                    <input type="email" id="email" name="email" required class="w-full bg-transparent border border-gray-300 dark:border-gray-800 rounded-xl px-4 py-3.5 text-gray-900 dark:text-white focus:outline-none glow-border transition-all">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div>
+                        <label for="project_type" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Project Type *</label>
+                        <select id="project_type" name="project_type" required class="w-full bg-brandCardLight dark:bg-brandBlack border border-gray-300 dark:border-gray-800 rounded-xl px-4 py-3.5 text-gray-900 dark:text-white focus:outline-none glow-border transition-all">
+                            <option value="" disabled selected class="text-gray-400">Select...</option>
+                            <option value="Arduino">Arduino Focus</option>
+                            <option value="ESP32">ESP32 Development</option>
+                            <option value="IoT">IoT Architecture</option>
+                            <option value="Academic">School/College Project</option>
+                            <option value="Other">Other Custom Layout</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="budget" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Budget (INR)</label>
+                        <input type="text" id="budget" name="budget" placeholder="e.g. ₹5,000" class="w-full bg-transparent border border-gray-300 dark:border-gray-800 rounded-xl px-4 py-3.5 text-gray-900 dark:text-white focus:outline-none glow-border transition-all">
+                    </div>
+                    <div>
+                        <label for="deadline" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Target Deadline</label>
+                        <input type="date" id="deadline" name="deadline" class="w-full bg-transparent border border-gray-300 dark:border-gray-800 rounded-xl px-4 py-3.5 text-gray-500 dark:text-gray-400 focus:outline-none glow-border transition-all">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="description" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Project Description & Requirements *</label>
+                    <textarea id="description" name="description" rows="5" required placeholder="Describe details regarding sensory inputs, output loops, or specific instructions your setup needs..." class="w-full bg-transparent border border-gray-300 dark:border-gray-800 rounded-xl px-4 py-3.5 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none glow-border transition-all"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">File Upload (Schematics / Docs)</label>
+                    <div class="border-2 border-dashed border-gray-300 dark:border-gray-800 rounded-xl px-6 py-8 text-center hover:border-electricBlue/40 transition-colors relative">
+                        <input type="file" id="file" name="file" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                        <i class="fa-solid fa-cloud-arrow-up text-2xl text-gray-400 mb-2"></i>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Click or drag files here to upload engineering specs</p>
+                        <p class="text-xs text-gray-400 dark:text-gray-600 mt-1">PDF, PNG, JPG, or ZIP assets</p>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-electricBlue text-brandBlack font-bold py-4 rounded-xl shadow-lg shadow-electricBlue/10 hover:bg-electricBlueHover transition-all duration-300">
+                        Submit Architectural Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section id="contact" class="py-16 bg-gray-50 dark:bg-brandCardDark/40 border-t border-gray-200 dark:border-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">Direct Communication Channels</h2>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-8 text-base">
+                <a href="tel:+917982095215" class="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-electricBlue transition-colors group">
+                    <div class="w-10 h-10 rounded-lg bg-white dark:bg-gray-900 flex items-center justify-center border border-gray-200 dark:border-gray-800 group-hover:border-electricBlue/30 shadow-sm">
+                        <i class="fa-solid fa-phone text-electricBlue"></i>
+                    </div>
+                    <span class="font-medium">+91 7982095215</span>
+                </a>
+                <a href="mailto:support.ystn_proto.tech@gmail.com" class="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-electricBlue transition-colors group">
+                    <div class="w-10 h-10 rounded-lg bg-white dark:bg-gray-900 flex items-center justify-center border border-gray-200 dark:border-gray-800 group-hover:border-electricBlue/30 shadow-sm">
+                        <i class="fa-solid fa-envelope text-electricBlue"></i>
+                    </div>
+                    <span class="font-medium">support.ystn_proto.tech@gmail.com</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brandBlack text-gray-400 border-t border-gray-800 py-8 text-center text-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 YSTN Proto Tech. All rights reserved. | Built with precision and passion.</p>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const htmlElement = document.documentElement;
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Check for saved theme preference or default to 'dark'
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'dark') {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+        updateThemeIcon();
+
+        // Theme toggle function
+        function toggleTheme() {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateThemeIcon();
+        }
+
+        function updateThemeIcon() {
+            if (htmlElement.classList.contains('dark')) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeIconMobile.classList.remove('fa-sun');
+                themeIconMobile.classList.add('fa-moon');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeIconMobile.classList.remove('fa-moon');
+                themeIconMobile.classList.add('fa-sun');
+            }
+        }
+
+        // Add click event listeners
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // Mobile menu toggle
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
